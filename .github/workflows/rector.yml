@@ -1,0 +1,30 @@
+name: Rector
+
+on:
+  pull_request:
+    paths:
+      - '**.php'
+
+permissions:
+  contents: write
+
+jobs:
+  php-code-styling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Rector
+        uses: zingimmick/rector-action@0.1.0
+        with:
+          args: --no-progress-bar --no-diffs --ansi
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: Rector Rectify

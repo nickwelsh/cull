@@ -1,0 +1,9 @@
+/.github            export-ignore
+/build              export-ignore
+/.gitignore         export-ignore
+/LICENSE.md         export-ignore
+/peck.json          export-ignore
+/phpstan*           export-ignore
+/pint.json          export-ignore
+/README.md          export-ignore
+/rector.php         export-ignore

@@ -1,0 +1,9 @@
+/vendor
+/build
+.DS_Store
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed

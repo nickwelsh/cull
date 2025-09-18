@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+// Try to locate Composer's autoloader in common locations
+$autoloadPaths = [
+    __DIR__ . '/../vendor/autoload.php',      // when developing locally
+    __DIR__ . '/../../../autoload.php',       // when installed as a dependency (vendor/bin -> ../../..)
+];
+
+$loaded = false;
+foreach ($autoloadPaths as $path) {
+    if (is_file($path)) {
+        require $path;
+        $loaded = true;
+        break;
+    }
+}
+
+if (!$loaded) {
+    fwrite(STDERR, "Autoloader not found. Please run 'composer install' or install via Composer.\n");
+    exit(1);
+}
+
+exit(\NickWelsh\Cull\Cull::run());
+
+
